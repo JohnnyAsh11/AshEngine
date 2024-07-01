@@ -3,13 +3,10 @@
 
 class IBoxCollidable : ICollidable
 {
-protected:
+public:
 	bool CheckCollision(ICollidable otherObj) override
 	{
-		//if (otherObj )
-		//{
-		//
-		//}
+
 	}
 };
 
