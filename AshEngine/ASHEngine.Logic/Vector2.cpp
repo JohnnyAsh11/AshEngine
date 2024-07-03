@@ -1,6 +1,15 @@
 #include "Vector2.h"
 #include "math.h"
 
+/// <summary>
+/// Default Constructor sets both x and y to 0
+/// </summary>
+Vector2::Vector2()
+{
+	_x = 0;
+	_y = 0;
+}
+
 // ===== CONSTRUCTORS ===== //
 /// <summary>
 /// Parameterized Constructor for the Vector2 sturct.
@@ -70,6 +79,24 @@ Vector2 Vector2::operator-(Vector2 otherVec)
 {
 	float xResult = _x - otherVec._x;
 	float yResult = _y - otherVec._y;
+
+	return Vector2(xResult, yResult);
+}
+
+/// <summary> Performs Vector multiplication. </summary>
+Vector2 Vector2::operator*(Vector2 otherVec)
+{
+	float xResult = _x * otherVec._x;
+	float yResult = _y * otherVec._y;
+
+	return Vector2(xResult, yResult);
+}
+
+/// <summary> Performs Vector division. </summary>
+Vector2 Vector2::operator/(Vector2 otherVec)
+{
+	float xResult = _x / otherVec._x;
+	float yResult = _y / otherVec._y;
 
 	return Vector2(xResult, yResult);
 }

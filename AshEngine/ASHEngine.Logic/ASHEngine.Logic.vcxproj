@@ -132,7 +132,6 @@
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ICollidable.h" />
     <ClInclude Include="IRender.h" />
     <ClInclude Include="ISceneObject.h" />
     <ClInclude Include="IUpdate.h" />

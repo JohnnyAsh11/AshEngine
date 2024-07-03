@@ -1,21 +1,36 @@
 #pragma once
 
-#include "ICollidable.h"
 #include "Vector2.h"
 
-struct Vectangle : ICollidable
+struct Vectangle
 {
 private:
-	float x;
-	float y;
-	float width;
-	float height;
+	// ===== FIELDS ===== //
+	float _x;
+	float _y;
+	float _width;
+	float _height;
 
 public:
+	// ===== CONSTRUCTORS ===== //
+	Vectangle();
 	Vectangle(Vector2 position);
 	Vectangle(Vector2 position, Vector2 dimensions);
 	Vectangle(float x, float y, float width, float height);
 
-	bool CheckCollision(ICollidable& otherObj) override;
+	// ===== PROPERTIES ===== //
+	Vector2 GetPosition();
+	float GetWidth();
+	float GetHeight();
+
+	// ===== METHODS ===== //
+	bool CheckCollision(Vectangle otherVect);
+	bool Contains(Vector2 point);
+
+	// ===== OPERATOR OVERLOADS ===== //
+	Vectangle operator +(Vector2 otherVec);
+	Vectangle operator -(Vector2 otherVec);
+	Vectangle operator *(Vector2 otherVec);
+	Vectangle operator /(Vector2 otherVec);
 };
 

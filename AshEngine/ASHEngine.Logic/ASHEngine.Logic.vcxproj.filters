@@ -41,9 +41,6 @@
     <ClInclude Include="ISceneObject.h">
       <Filter>Header Files\ASHEngine.Logic.Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="ICollidable.h">
-      <Filter>Header Files\ASHEngine.Logic.Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="Vector2.h">
       <Filter>Header Files\ASHEngine.Logic.Math</Filter>
     </ClInclude>

@@ -12,6 +12,7 @@ private:
 
 public:
 	// ===== CONSTRUCTORS =====//
+	Vector2();
 	Vector2(float x, float y);
 
 	// ===== PROPERTIES ===== //
@@ -29,5 +30,7 @@ public:
 	// ===== OPERATOR OVERLOADS ===== //
 	Vector2 operator +(Vector2 otherVec);
 	Vector2 operator -(Vector2 otherVec);
+	Vector2 operator *(Vector2 otherVec);
+	Vector2 operator /(Vector2 otherVec);
 };
 
