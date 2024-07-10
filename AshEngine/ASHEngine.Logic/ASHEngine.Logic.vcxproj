@@ -70,16 +70,25 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Platform)$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>&lt;different options&gt;</LinkIncremental>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\johnn\Desktop\AshEngine\AshEngine\ASHEngine.Include;$(SolutionDir)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>&lt;different options&gt;</DebugInformationFormat>
+      <SupportJustMyCode>&lt;different options&gt;</SupportJustMyCode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX64</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -108,7 +117,7 @@
       </AdditionalUsingDirectories>
       <ForcedIncludeFiles>
       </ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>C:\Users\johnn\Desktop\AshEngine\AshEngine\ASHEngine.Include;$(SolutionDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\johnn\OneDrive\Desktop\AshEngine\AshEngine\ASHEngine.Include;$(SolutionDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

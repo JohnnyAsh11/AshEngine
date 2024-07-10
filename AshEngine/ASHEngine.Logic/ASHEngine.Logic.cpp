@@ -1,5 +1,6 @@
 #include <iostream>
 #include <nlohmann/json.hpp>
+#include "Vectangle.h"
 
 /// <summary>
 /// Contains main call and load logic for the engine.  Powerhouse behind the GUI form application.

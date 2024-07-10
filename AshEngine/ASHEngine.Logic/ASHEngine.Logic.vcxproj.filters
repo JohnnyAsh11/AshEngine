@@ -50,5 +50,11 @@
     <ClInclude Include="HierarchyNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IBoxCollidable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ICollidable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
