@@ -1,4 +1,5 @@
 #include <iostream>
+#include <nlohmann/json.hpp>
 
 /// <summary>
 /// Contains main call and load logic for the engine.  Powerhouse behind the GUI form application.
