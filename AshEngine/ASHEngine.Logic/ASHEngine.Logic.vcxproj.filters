@@ -47,5 +47,8 @@
     <ClInclude Include="Vectangle.h">
       <Filter>Header Files\ASHEngine.Logic.Math</Filter>
     </ClInclude>
+    <ClInclude Include="HierarchyNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

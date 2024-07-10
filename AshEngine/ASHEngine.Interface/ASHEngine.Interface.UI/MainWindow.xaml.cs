@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using ASHEngine.Interface.Reading;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,6 +19,7 @@ namespace ASHEngine.Interface
     {
         public MainWindow()
         {
+            JSONTestClass test = new JSONTestClass("../../../../ASHEngine.JSON/TestData.json");
             InitializeComponent();
         }
     }
