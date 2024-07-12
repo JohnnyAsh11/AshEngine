@@ -19,6 +19,9 @@
     <Filter Include="Header Files\ASHEngine.Logic.Math">
       <UniqueIdentifier>{2497cd4c-2ce1-4207-b299-fc04789af97b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Data Transfer Files">
+      <UniqueIdentifier>{d22e36c9-d701-4ec0-a738-eb5a2d0d2405}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ASHEngine.Logic.cpp">
@@ -50,10 +53,10 @@
     <ClInclude Include="HierarchyNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IBoxCollidable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ICollidable.h">
+      <Filter>Header Files\ASHEngine.Logic.Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

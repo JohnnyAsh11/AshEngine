@@ -159,11 +159,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HierarchyNode.h" />
-    <ClInclude Include="IBoxCollidable.h" />
     <ClInclude Include="ICollidable.h" />
     <ClInclude Include="IRender.h" />
     <ClInclude Include="ISceneObject.h" />
     <ClInclude Include="IUpdate.h" />
+    <ClInclude Include="JsonReader.h" />
     <ClInclude Include="Vectangle.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>

@@ -22,6 +22,8 @@ public:
 	Vector2 GetPosition();
 	float GetWidth();
 	float GetHeight();
+	float GetX();
+	float GetY();
 
 	// ===== METHODS ===== //
 	bool CheckCollision(Vectangle otherVect);

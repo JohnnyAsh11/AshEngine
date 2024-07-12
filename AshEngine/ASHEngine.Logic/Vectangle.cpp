@@ -3,6 +3,8 @@
 #include <string>
 #include <exception>
 #include <iostream>
+#include <nlohmann/json.hpp>
+
 
 Vectangle::Vectangle()
 {
@@ -41,6 +43,14 @@ float Vectangle::GetWidth()
 float Vectangle::GetHeight()
 {
 	return _height;
+}
+float Vectangle::GetX()
+{
+	return _x;
+}
+float Vectangle::GetY()
+{
+	return _y;
 }
 
 /// <summary>
