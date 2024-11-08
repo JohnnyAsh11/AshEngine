@@ -1,6 +1,8 @@
 #ifndef __DEFINITIONS_H_
 #define __DEFINITIONS_H_
 
+#include <iostream>
+
 // Including OpenGL extension wranglers.
 #include <GL/glew.h>
 #include <GL/wglew.h>
@@ -40,8 +42,28 @@ namespace ASH
     typedef glm::mat3 Matrix3;
     typedef glm::mat4 Matrix4;
     typedef glm::quat Quaternion;
+    typedef std::string String;
 
+    /// <summary>
+    /// Converts a Quaternion into a Matrix4.
+    /// </summary>
+    /// <param name="a_qInput">The Quaternion being converted.</param>
+    /// <returns>The converted Matrix4.</returns>
     ASH_API Matrix4 ToMatrix4(Quaternion a_qInput);
+
+    /// <summary>
+    /// Checks that there are no errors coming from OpenGL.
+    /// </summary>
+    ASH_API void GLClearError(void);
+
+    /// <summary>
+    /// Logs the OpenGL function calls if they fail as outlined in the macro using GLLogCall.
+    /// </summary>
+    /// <param name="a_sFunction">The calling function name.</param>
+    /// <param name="a_sFile">The file location of the calling function.</param>
+    /// <param name="a_uLine">The line that the calling function is on.</param>
+    /// <returns>False if there is an error and true if not.  Slightly unintuitive.</returns>
+    ASH_API bool GLLogCall(const char* a_sFunction, const char* a_sFile, int a_uLine);
 }
 
 // Macro variables:
