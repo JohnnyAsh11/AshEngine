@@ -36,6 +36,7 @@
 
 namespace ASH
 {
+    #pragma region Typedefs
     typedef glm::vec2 Vector2;
     typedef glm::vec3 Vector3;
     typedef glm::vec4 Vector4;
@@ -43,6 +44,7 @@ namespace ASH
     typedef glm::mat4 Matrix4;
     typedef glm::quat Quaternion;
     typedef std::string String;
+    #pragma endregion
 
     /// <summary>
     /// Converts a Quaternion into a Matrix4.
@@ -76,5 +78,9 @@ namespace ASH
 #define AXIS_Y Vector3(0.0f, 1.0f, 0.0f)
 #define AXIS_Z Vector3(0.0f, 0.0f, 1.0f)
 
+// Colors:
+#define CORNFLOWER_BLUE Vector4(0.39f, 0.58f, 0.92f, 0.0f)
+#define PAPAYA_ORANGE Vector4(0.99f, 0.5f, 0.0f, 0.0f)
+#define EMERALD_GREEN Vector4(0.12f, 0.3f, 0.18f, 0.0f)
 
 #endif //__DEFINTIONS_H_

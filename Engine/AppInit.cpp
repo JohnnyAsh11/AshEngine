@@ -14,20 +14,25 @@ void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
 
 void Application::Run(void)
 {
+	// Starting up the loop with the control variable.
 	m_bIsRunning = true;
 
 	while (m_bIsRunning)
 	{
+		// Calling the logic update method.
 		this->Update();
 
-		// clear the buffers
+		// Clearing the buffers.
 		GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 
-		//Color and draw
+		// Coloring and drawing.
 		GLCall(glDrawArrays(GL_TRIANGLES, 0, 3));
 
-		// end the current frame (internally swaps the front and back buffers)
+		// Ending the current frame (internally swaps the front and back buffers)
 		m_pWindow->display();
+
+		// Clearing the screen to be papaya orange.
+		this->ClearScreen(PAPAYA_ORANGE);
 	}
 }
 
@@ -35,7 +40,7 @@ void Application::InitWindow()
 {
 	m_pWindow->setVerticalSyncEnabled(true);
 
-	// Initializing GLEW
+	// Initializing GLEW.
 	glewExperimental = GL_TRUE;
 	GLCall(glewInit());
 
