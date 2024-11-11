@@ -78,5 +78,9 @@ namespace ASH
 #define AXIS_Y Vector3(0.0f, 1.0f, 0.0f)
 #define AXIS_Z Vector3(0.0f, 0.0f, 1.0f)
 
+// Colors:
+#define CORNFLOWER_BLUE Vector4(0.39f, 0.58f, 0.92f, 0.0f)
+#define PAPAYA_ORANGE Vector4(0.99f, 0.5f, 0.0f, 0.0f)
+#define EMERALD_GREEN Vector4(0.12f, 0.3f, 0.18f, 0.0f)
 
 #endif //__DEFINTIONS_H_
