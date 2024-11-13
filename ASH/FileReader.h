@@ -1,15 +1,49 @@
 #include "Definitions.h"
-#include <iostream>
+#include <fstream>
 
+using namespace ASH;
+
+/// <summary>
+/// Contains functionality for reading from external files.
+/// </summary>
 class FileReader
 {
 private:
-	FileReader* m_fInstance;
+	static FileReader* m_pInstance;
 
 public:
-	FileReader GetInstance(void);
+	/// <summary>
+	/// Retrieves the instance of the FileReader.
+	/// </summary>
+	/// <returns>The single instance of the FileReader.</returns>
+	static FileReader GetInstance(void);
+
+	/// <summary>
+	/// Removes the single instance of the FileReader from memory.
+	/// </summary>
+	static void ReleaseInstance(void);
+
+	/// <summary>
+	/// Reads the contents of an entire file to a single string and returns that string.
+	/// </summary>
+	/// <param name="a_sfilepath">The filepath to what is being read in.</param>
+	/// <returns>Returns the contents of the file as a single string.</returns>
+	String ReadFile(String a_sfilepath);
+
 private:
-	FileReader();
+	/// <summary>
+	/// Constructs an instance of the FileReader object.
+	/// </summary>
+	FileReader(void);
+
+	/// <summary>
+	/// Destructs the instances of the FileReader object.
+	/// </summary>
 	~FileReader(void);
+
+	/// <summary>
+	/// Frees the memory allocated by the FileReader object.
+	/// </summary>
+	static void Release(void);
 
 };
