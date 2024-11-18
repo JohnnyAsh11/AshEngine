@@ -17,7 +17,7 @@
       <UniqueIdentifier>{63faac43-a7a0-4f77-899c-4812ac769a1e}</UniqueIdentifier>
     </Filter>
     <Filter Include="shaders">
-      <UniqueIdentifier>{1925b8a9-7829-4e82-ba8e-03344fcd2aca}</UniqueIdentifier>
+      <UniqueIdentifier>{1f13752b-e6e2-4404-8cba-47faef7e03f5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -43,10 +43,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="basic.vs">
+    <None Include="_Binary\shaders\basic.fs">
       <Filter>shaders</Filter>
     </None>
-    <None Include="basic.fs">
+    <None Include="_Binary\shaders\basic.vs">
       <Filter>shaders</Filter>
     </None>
   </ItemGroup>

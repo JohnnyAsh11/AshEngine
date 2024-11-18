@@ -8,6 +8,7 @@
 #include <SFML/OpenGL.hpp>
 
 #include <ASH/Definitions.h>
+#include <ASH/FileReader.h>
 using namespace ASH;
 
 #endif //__MAIN_H_
