@@ -1,12 +1,13 @@
 #include "Definitions.h"
 #include <fstream>
 
-using namespace ASH;
+namespace ASH
+{
 
 /// <summary>
 /// Contains functionality for reading from external files.
 /// </summary>
-class FileReader
+class ASH_API FileReader
 {
 private:
 	static FileReader* m_pInstance;
@@ -16,7 +17,7 @@ public:
 	/// Retrieves the instance of the FileReader.
 	/// </summary>
 	/// <returns>The single instance of the FileReader.</returns>
-	static FileReader GetInstance(void);
+	static FileReader* GetInstance(void);
 
 	/// <summary>
 	/// Removes the single instance of the FileReader from memory.
@@ -45,5 +46,6 @@ private:
 	/// Frees the memory allocated by the FileReader object.
 	/// </summary>
 	static void Release(void);
-
 };
+
+}
