@@ -160,8 +160,8 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" "$(SolutionDir)_Binary"</Command>
     <ClInclude Include="Main.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="basic.fs" />
-    <None Include="basic.vs" />
+    <None Include="_Binary\shaders\basic.fs" />
+    <None Include="_Binary\shaders\basic.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
