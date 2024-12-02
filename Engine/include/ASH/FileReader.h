@@ -7,7 +7,7 @@ namespace ASH
 /// <summary>
 /// Contains functionality for reading from external files.
 /// </summary>
-class ASH_API FileReader
+class FileReader
 {
 private:
 	static FileReader* m_pInstance;

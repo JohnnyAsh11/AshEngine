@@ -1,8 +1,24 @@
+#include "pch.h"
 #include "FileReader.h"
+
+using namespace ASH;
+
+FileReader* FileReader::m_pInstance = nullptr;
 
 FileReader::~FileReader(void) { Release(); }
 
 FileReader::FileReader(void) {}
+
+FileReader* FileReader::GetInstance(void)
+{
+	// Instantiating the 
+	if (m_pInstance == nullptr)
+	{
+		m_pInstance = new FileReader();
+	}
+
+	return m_pInstance;
+}
 
 void FileReader::Release(void)
 {

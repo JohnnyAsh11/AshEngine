@@ -8,6 +8,10 @@ void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
 		sf::Style::Default,
 		sf::ContextSettings(24));
 
+	FileReader* fileReader = FileReader::GetInstance();
+	String basicShader = fileReader->ReadFile("shaders/basic.vs");
+	fileReader->ReleaseInstance();
+
 	InitWindow();
 	//ShaderInit();
 }
