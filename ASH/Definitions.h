@@ -66,6 +66,14 @@ namespace ASH
     /// <param name="a_uLine">The line that the calling function is on.</param>
     /// <returns>False if there is an error and true if not.  Slightly unintuitive.</returns>
     ASH_API bool GLLogCall(const char* a_sFunction, const char* a_sFile, int a_uLine);
+
+    /// <summary>
+    /// Loads and compiles the shaders for the program. 
+    /// </summary>
+    /// <param name="a_sVertexShader">Filepath to the vertex shader being used.</param>
+    /// <param name="a_sFragmentShader">Filepath to the the fragment shader being used.</param>
+    /// <returns>The OpenGL identifier of the shaders.</returns>
+    ASH_API GLuint LoadShaders(const char* a_sVertexShader, const char* a_sFragmentShader);
 }
 
 // Macro variables:
@@ -82,5 +90,11 @@ namespace ASH
 #define CORNFLOWER_BLUE Vector4(0.39f, 0.58f, 0.92f, 0.0f)
 #define PAPAYA_ORANGE Vector4(0.99f, 0.5f, 0.0f, 0.0f)
 #define EMERALD_GREEN Vector4(0.12f, 0.3f, 0.18f, 0.0f)
+
+// Default values:
+#define ERROR 0
+#define SUCCESS 1
+
+#define NULL_STR ""
 
 #endif //__DEFINTIONS_H_

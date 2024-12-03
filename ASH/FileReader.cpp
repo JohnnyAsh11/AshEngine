@@ -35,11 +35,16 @@ void FileReader::ReleaseInstance(void)
 	}
 }
 
-String FileReader::ReadFile(String a_sfilepath)
+String FileReader::ReadFile(String a_sFilepath)
 {
+	if (a_sFilepath == NULL_STR)
+	{
+		return NULL_STR;
+	}
+
 	// Initializing the stream reader.
 	String fileContent;
-	std::ifstream reader(a_sfilepath, std::ios::in);
+	std::ifstream reader(a_sFilepath, std::ios::in);
 
 	// Checking that the file was successfully opened.
 	if (reader.is_open())

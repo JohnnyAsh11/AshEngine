@@ -29,7 +29,7 @@ public:
 	/// </summary>
 	/// <param name="a_sfilepath">The filepath to what is being read in.</param>
 	/// <returns>Returns the contents of the file as a single string.</returns>
-	String ReadFile(String a_sfilepath);
+	String ReadFile(String a_sFilepath = NULL_STR);
 
 private:
 	/// <summary>
