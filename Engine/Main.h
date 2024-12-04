@@ -9,6 +9,7 @@
 
 #include <ASH/Definitions.h>
 #include <ASH/FileReader.h>
+#include <ASH/Shader.h>
 using namespace ASH;
 
 #endif //__MAIN_H_

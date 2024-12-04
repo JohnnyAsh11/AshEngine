@@ -4,5 +4,5 @@ in vec3 positionBuffer;
 
 void main()
 {
-	gl_Position = vec4( positionBuffer, 1.0 );
+	gl_Position = vec4(positionBuffer, 1.0);
 }

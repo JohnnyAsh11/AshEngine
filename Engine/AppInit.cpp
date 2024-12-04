@@ -2,18 +2,20 @@
 
 void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
 {
+	std::cout << "Initializing the Window." << std::endl;
+
+	// Initializing the window object.
 	m_pWindow = new sf::Window(
 		sf::VideoMode(a_uWidth, a_uHeight),
 		a_sAppName, 
 		sf::Style::Default,
 		sf::ContextSettings(24));
 
-	FileReader* fileReader = FileReader::GetInstance();
-	String basicShader = fileReader->ReadFile("shaders/basic.vs");
-	fileReader->ReleaseInstance();
-
+	// Initializing the window settings.
 	InitWindow();
-	//ShaderInit();
+
+	// Initializing the Shader.
+	ShaderInit();
 }
 
 void Application::Run(void)
@@ -62,5 +64,19 @@ void Application::InitWindow()
 
 void Application::ShaderInit(void)
 {
+	// Initializing the shader object.
+	m_sProgramShader = new Shader();
+	
+	// Compiling the loaded in fragment and vertex shaders.
+	//  Will automatically use the basic vertex and fragment shaders.
+	m_sProgramShader->CompileShader(
+		"shaders/basic.vs",
+		"shaders/basic.fs", 
+		"BasicProgramShaders");
 
-}
+	// Outputing that there was an error.
+	if (m_sProgramShader->GetProgramID() == ERROR)
+	{
+		std::cout << "There was an error in shader compilation" << std::endl;
+	}
+}  

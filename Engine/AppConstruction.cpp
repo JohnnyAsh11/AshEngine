@@ -22,7 +22,12 @@ Application::Application(Application const& a_aInput)
 
 Application::~Application()
 {
+	// Releasing singletons.
+	FileReader::GetInstance()->ReleaseInstance();
+
+	// Freeing memory.
 	Realloc(m_pWindow);
+	Realloc(m_sProgramShader);
 }
 
 Application& Application::operator=(Application const& a_aInput)
