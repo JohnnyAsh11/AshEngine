@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "FileReader.h"
-
 using namespace ASH;
 
 FileReader* FileReader::m_pInstance = nullptr;
@@ -11,7 +10,7 @@ FileReader::FileReader(void) {}
 
 FileReader* FileReader::GetInstance(void)
 {
-	// Instantiating the 
+	// Instantiating the single instance of the FileReader.
 	if (m_pInstance == nullptr)
 	{
 		m_pInstance = new FileReader();

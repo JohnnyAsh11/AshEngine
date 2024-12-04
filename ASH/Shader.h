@@ -1,3 +1,6 @@
+#ifndef __SHADER_H_
+#define __SHADER_H_
+
 #include "Definitions.h"
 
 namespace ASH
@@ -73,3 +76,5 @@ public:
 };
 
 }
+
+#endif //__SHADER_H_

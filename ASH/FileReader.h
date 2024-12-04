@@ -1,3 +1,6 @@
+#ifndef __FILEREADER_H_
+#define __FILEREADER_H_
+
 #include "Definitions.h"
 #include <fstream>
 
@@ -49,3 +52,5 @@ private:
 };
 
 }
+
+#endif //__FILEREADER_H_
