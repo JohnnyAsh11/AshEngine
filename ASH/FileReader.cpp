@@ -59,6 +59,10 @@ String FileReader::ReadFile(String a_sFilepath)
 		// Closing the file.
 		reader.close();
 	}
+	else 
+	{
+		std::cout << "There was an error opening the file." << std::endl;
+	}
 
 	return fileContent;
 }
