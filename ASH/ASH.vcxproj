@@ -159,6 +159,7 @@ copy "Definitions.h" "$(SolutionDir)include\ASH"</Command>
     <ClInclude Include="Definitions.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Shader.h" />
   </ItemGroup>
