@@ -17,6 +17,8 @@ Application::Application(Application const& a_aInput)
 		"COPY WINDOW",
 		sf::Style::Default,
 		sf::ContextSettings(24));
+
+
 	m_sProgramShader = new Shader(*a_aInput.m_sProgramShader);
 }
 

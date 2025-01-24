@@ -1,23 +1,5 @@
 #include "Application.h"
 
-void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
-{
-	std::cout << "Initializing the Window." << std::endl;
-
-	// Initializing the window object.
-	m_pWindow = new sf::Window(
-		sf::VideoMode(a_uWidth, a_uHeight),
-		a_sAppName, 
-		sf::Style::Default,
-		sf::ContextSettings(24));
-
-	// Initializing the window settings.
-	InitWindow();
-
-	// Initializing the Shader.
-	ShaderInit();
-}
-
 void Application::Run(void)
 {
 	// Starting up the loop with the control variable.
@@ -32,13 +14,10 @@ void Application::Run(void)
 		GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 
 		// Coloring and drawing.
-		GLCall(glDrawArrays(GL_TRIANGLES, 0, 3));
+		this->Render();
 
 		// Ending the current frame (internally swaps the front and back buffers)
 		m_pWindow->display();
-
-		// Clearing the screen to be papaya orange.
-		this->ClearScreen(PAPAYA_ORANGE);
 	}
 }
 
@@ -70,8 +49,8 @@ void Application::ShaderInit(void)
 	// Compiling the loaded in fragment and vertex shaders.
 	//  Will automatically use the basic vertex and fragment shaders.
 	m_sProgramShader->CompileShader(
-		"shaders/basic.vs",
-		"shaders/basic.fs", 
+		"shaders/basicVertex.hlsl",
+		"shaders/basicFrag.hlsl", 
 		"BasicProgramShaders");
 
 	// Outputing that there was an error.

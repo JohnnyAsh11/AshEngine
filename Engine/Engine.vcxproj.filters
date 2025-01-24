@@ -43,10 +43,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="_Binary\shaders\basic.fs">
+    <None Include="_Binary\shaders\basicFrag.hlsl">
       <Filter>shaders</Filter>
     </None>
-    <None Include="_Binary\shaders\basic.vs">
+    <None Include="_Binary\shaders\basicVertex.hlsl">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="wave.hlsl">
       <Filter>shaders</Filter>
     </None>
   </ItemGroup>
