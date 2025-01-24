@@ -11,6 +11,10 @@ typedef unsigned int uint;
 class Application
 {
 private:
+	// Vertex Buffer Object and Vertex Array Object
+	GLuint m_vao;
+	GLuint m_vbo;
+
 	// Fields for the window itself
 	sf::Window* m_pWindow = nullptr;
 	Shader* m_sProgramShader = nullptr;

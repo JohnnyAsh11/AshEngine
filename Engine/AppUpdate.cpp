@@ -27,9 +27,9 @@ void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
 	int vertexCount = lPositions.size();
 
 	VectorList lColors = VectorList();
-	lColors.push_back(EMERALD_GREEN);
-	lColors.push_back(PAPAYA_ORANGE);
-	lColors.push_back(CORNFLOWER_BLUE);
+	lColors.push_back(Vector3(1.0f, 0.0f, 0.0f));
+	lColors.push_back(Vector3(0.0f, 1.0f, 0.0f));
+	lColors.push_back(Vector3(0.0f, 0.0f, 1.0f));
 
 	VectorList lVertices = VectorList();
 	for (uint i = 0; i < vertexCount; i++)
@@ -39,15 +39,13 @@ void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
 	}
 
 	// Creating/Setting the Vertex Array object.
-	GLuint vao;
-	GLCall(glGenVertexArrays(1, &vao));
-	GLCall(glBindVertexArray(vao));
+	GLCall(glGenVertexArrays(1, &m_vao));
+	GLCall(glBindVertexArray(m_vao));
 
 	// Creating/Setting the Vertex Buffer object.
-	GLuint vbo;
-	GLCall(glGenBuffers(1, &vbo));
-	GLCall(glBindBuffer(GL_ARRAY_BUFFER, vbo));
-	GLCall(glBufferData(GL_ARRAY_BUFFER, vertexCount * 3 * sizeof(Vector3), &lVertices[0], GL_STATIC_DRAW));
+	GLCall(glGenBuffers(1, &m_vbo));
+	GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_vbo));
+	GLCall(glBufferData(GL_ARRAY_BUFFER, vertexCount * vertexCount * sizeof(Vector3), &lVertices[0], GL_STATIC_DRAW));
 
 	//count the attributes
 	int attributeCount = 2;
@@ -82,6 +80,14 @@ void Application::Update(void)
 			GLCall(glViewport(0, 0, event.size.width, event.size.height));
 		}
 	}
+
+	Matrix4 m4Model = IDENTITY_M4;
+	Matrix4 m4View;//view matrix
+	Matrix4 m4Projection;//projection matrix
+
+	//read uniforms from the shader and send values
+	GLuint MVP = glGetUniformLocation(m_sProgramShader->GetProgramID(), "MVP");//Model View Projection
+	glUniformMatrix4fv(MVP, 1, GL_FALSE, glm::value_ptr(m4Projection * m4View * m4Model));
 }
 
 void Application::Render(void)

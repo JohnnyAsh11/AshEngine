@@ -1,8 +1,26 @@
-#version 330
+//#version 330
+//
+//in vec3 positionBuffer;
+//
+//void main()
+//{
+//	gl_Position = vec4(positionBuffer, 1.0);
+//}
 
-in vec3 positionBuffer;
+#version 330
+layout (location = 0) in
+vec3 Position_b;
+layout (location = 1) in
+vec3 Color_b;
+
+uniform mat4 MVP;
+
+out
+vec3 Color;
 
 void main()
 {
-	gl_Position = vec4(positionBuffer, 1.0);
+    gl_Position = MVP * vec4(Position_b, 1);
+	
+    Color = Color_b;
 }
