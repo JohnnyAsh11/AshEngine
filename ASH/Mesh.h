@@ -73,6 +73,8 @@ namespace ASH
 		/// </summary>
 		void Clear(void);
 
+	private:
+
 		/// <summary>
 		/// Resets the vbo and vao objects in addition to the enum flag.
 		/// </summary>

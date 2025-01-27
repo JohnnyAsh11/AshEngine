@@ -67,19 +67,51 @@ Mesh& Mesh::operator=(const Mesh& other)
 	return *this;
 }
 
-void ASH::Mesh::AddVertex(Vector3 a_v3VertexPosition)
+void Mesh::AddVertex(Vector3 a_v3VertexPosition)
 {
+	// Changing the vertex type from undefined.
+	if (m_VertexType == VertexType::Undefined) m_VertexType = VertexType::VertexPosition;
+
+	// Assuring that the data being added matches the buffer format.
+	if (m_VertexType != VertexType::VertexPosition) return;
+
+	// Actually adding the vertexc to the list.
+	m_lVertices->push_back(a_v3VertexPosition);
+
+	// Incrementing the vertex count.
+	m_dVertexCount++;
 }
 
-void ASH::Mesh::AddVertexColor(Vector3 a_v3VertexPosition, Vector3 a_v3VertexColor)
+void Mesh::AddVertexColor(Vector3 a_v3VertexPosition, Vector3 a_v3VertexColor)
 {
+	// Changing the vertex type from undefined. 
+	if (m_VertexType == VertexType::Undefined) m_VertexType = VertexType::VertexPositionColor;
+
+	// Assuring that the data being added matches the buffer format.
+	if (m_VertexType != VertexType::VertexPositionColor) return;
+
+	// Actually adding the vertices to the list.
+	m_lVertices->push_back(a_v3VertexPosition);
+	m_lVertices->push_back(a_v3VertexColor);
+
+	// Incrementing the vertex count.
+	m_dVertexCount++;
 }
 
-void ASH::Mesh::Clear(void)
+void Mesh::Clear(void)
 {
+	// Actually clearing the list.
+	m_lVertices->clear();
+
+	// Resetting variables.
+	this->Reset();
 }
 
-void ASH::Mesh::Reset(void)
+void Mesh::Reset(void)
 {
+	m_VertexType = VertexType::Undefined;
+	m_dVertexCount = 0;
+	m_vao = 0;
+	m_vbo = 0;
 }
 
