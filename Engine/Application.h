@@ -11,13 +11,15 @@ typedef unsigned int uint;
 class Application
 {
 private:
+	Mesh* m_Mesh = nullptr;
+
 	// Vertex Buffer Object and Vertex Array Object
 	GLuint m_vao;
 	GLuint m_vbo;
 
 	// Fields for the window itself
 	sf::Window* m_pWindow = nullptr;
-	Shader* m_sProgramShader = nullptr;
+	ASH::Shader* m_sProgramShader = nullptr;
 
 	Vector3 m_v3Mouse = Vector3();
 	bool m_bIsRunning = false;

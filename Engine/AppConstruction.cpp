@@ -22,16 +22,6 @@ Application::Application(Application const& a_aInput)
 	m_sProgramShader = new Shader(*a_aInput.m_sProgramShader);
 }
 
-Application::~Application()
-{
-	// Releasing singletons.
-	FileReader::GetInstance()->ReleaseInstance();
-
-	// Freeing memory.
-	Realloc(m_pWindow);
-	Realloc(m_sProgramShader);
-}
-
 Application& Application::operator=(Application const& a_aInput)
 {
 	// Copying stack allocated data.
@@ -51,4 +41,25 @@ Application& Application::operator=(Application const& a_aInput)
 
 	// Returning this instance of the application.
 	return *this;
+}
+
+void Application::ChangeScreenBounds(void)
+{
+	std::cout << "Altering screen bounds" << std::endl;
+}
+
+void Application::ClearScreen(Vector4 a_v4ClearColor)
+{
+	// Setting the clear color.
+	if (m_v4ClearColor != a_v4ClearColor)
+	{
+		m_v4ClearColor = a_v4ClearColor;
+	}
+
+	// Actually clearing the color in the render window.
+	GLCall(glClearColor(
+		m_v4ClearColor.x,
+		m_v4ClearColor.y,
+		m_v4ClearColor.z,
+		m_v4ClearColor.w));
 }

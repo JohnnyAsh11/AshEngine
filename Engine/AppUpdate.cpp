@@ -18,49 +18,32 @@ void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
 
 	// Initializing the Shader.
 	ShaderInit();
-	glUseProgram(m_sProgramShader->GetProgramID());
+	
+	m_Mesh = new Mesh();
 
-	VectorList lPositions = VectorList();
-	lPositions.push_back(Vector3(-0.5f, -0.5f, 0.0f));
-	lPositions.push_back(Vector3(0.5f, -0.5f, 0.0f));
-	lPositions.push_back(Vector3(0.0f, 0.5f, 0.0f));
-	int vertexCount = lPositions.size();
+	int dSubdivisions = 12;
+	float fDeltaAngle = (2.0f * PI) / dSubdivisions;
+	float fRadius = 0.25f;
+	Vector3 v3Origin = Vector3(0.0f, 0.0f, 0.0f);
+	std::vector<Vector3> lVertices;
 
-	VectorList lColors = VectorList();
-	lColors.push_back(Vector3(1.0f, 0.0f, 0.0f));
-	lColors.push_back(Vector3(0.0f, 1.0f, 0.0f));
-	lColors.push_back(Vector3(0.0f, 0.0f, 1.0f));
-
-	VectorList lVertices = VectorList();
-	for (uint i = 0; i < vertexCount; i++)
+	for (uint i = 0; i < dSubdivisions; i++)
 	{
-		lVertices.push_back(lPositions[i]);
-		lVertices.push_back(lColors[i]);
+		lVertices.push_back(Vector3(
+			cos(i * fDeltaAngle) * fRadius,
+			sin(i * fDeltaAngle) * fRadius,
+			0.0f
+		));
 	}
 
-	// Creating/Setting the Vertex Array object.
-	GLCall(glGenVertexArrays(1, &m_vao));
-	GLCall(glBindVertexArray(m_vao));
+	for (uint i = 0; i < dSubdivisions; i++)
+	{
+		m_Mesh->AddVertexColor(v3Origin, BLUE);
+		m_Mesh->AddVertexColor(lVertices[i], RED);
+		m_Mesh->AddVertexColor(lVertices[(i + 1) % dSubdivisions], GREEN);
+	}
 
-	// Creating/Setting the Vertex Buffer object.
-	GLCall(glGenBuffers(1, &m_vbo));
-	GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_vbo));
-	GLCall(glBufferData(GL_ARRAY_BUFFER, vertexCount * vertexCount * sizeof(Vector3), &lVertices[0], GL_STATIC_DRAW));
-
-	//count the attributes
-	int attributeCount = 2;
-
-	// Position attribute
-	GLCall(glEnableVertexAttribArray(0));
-	GLCall(glVertexAttribPointer(0, vertexCount, GL_FLOAT, GL_FALSE, attributeCount * sizeof(Vector3), (GLvoid*)0));
-
-	// Color attribute
-	GLCall(glEnableVertexAttribArray(1));
-	GLCall(glVertexAttribPointer(1, vertexCount, GL_FLOAT, GL_FALSE, attributeCount * sizeof(Vector3), (GLvoid*)(1 * sizeof(Vector3))));
-	// Getting the attribute location of the program shader.
-	//GLint positionBufferID = glGetAttribLocation(m_sProgramShader->GetProgramID(), "positionBuffer");
-	//glEnableVertexAttribArray(positionBufferID);
-	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
+	m_Mesh->CompileMesh();
 }
 
 void Application::Update(void)
@@ -81,41 +64,26 @@ void Application::Update(void)
 		}
 	}
 
-	Matrix4 m4Model = IDENTITY_M4;
-	Matrix4 m4View;//view matrix
-	Matrix4 m4Projection;//projection matrix
-
-	//read uniforms from the shader and send values
-	GLuint MVP = glGetUniformLocation(m_sProgramShader->GetProgramID(), "MVP");//Model View Projection
-	glUniformMatrix4fv(MVP, 1, GL_FALSE, glm::value_ptr(m4Projection * m4View * m4Model));
+	m_Mesh->Update();
 }
 
 void Application::Render(void)
 {
-	// Drawing the triangle.
-	GLCall(glDrawArrays(GL_TRIANGLES, 0, 3));
+	m_Mesh->Render();
 
 	// Clearing the screen to be a base color.
 	this->ClearScreen(EMERALD_GREEN);
 }
 
-void Application::ChangeScreenBounds(void)
+Application::~Application()
 {
-	std::cout << "Altering screen bounds" << std::endl;
-}
+	// Freeing heap allocated variables.
+	Realloc(m_Mesh);
 
-void Application::ClearScreen(Vector4 a_v4ClearColor)
-{
-	// Setting the clear color.
-	if (m_v4ClearColor != a_v4ClearColor)
-	{
-		m_v4ClearColor = a_v4ClearColor;
-	}
+	// Releasing singletons.
+	FileReader::GetInstance()->ReleaseInstance();
 
-	// Actually clearing the color in the render window.
-	GLCall(glClearColor(
-			m_v4ClearColor.x, 
-			m_v4ClearColor.y,
-			m_v4ClearColor.z,
-			m_v4ClearColor.w));
+	// Freeing memory.
+	Realloc(m_pWindow);
+	Realloc(m_sProgramShader);
 }

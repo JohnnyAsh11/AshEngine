@@ -87,9 +87,17 @@ namespace ASH
 #define AXIS_Z Vector3(0.0f, 0.0f, 1.0f)
 
 // Colors:
-#define CORNFLOWER_BLUE Vector4(0.39f, 0.58f, 0.92f, 0.0f)
-#define PAPAYA_ORANGE Vector4(0.99f, 0.5f, 0.0f, 0.0f)
-#define EMERALD_GREEN Vector4(0.12f, 0.3f, 0.18f, 0.0f)
+#define CORNFLOWER_BLUE Vector4(0.39f, 0.58f, 0.92f, 1.0f)
+#define PAPAYA_ORANGE Vector4(0.99f, 0.5f, 0.0f, 1.0f)
+#define EMERALD_GREEN Vector4(0.12f, 0.3f, 0.18f, 1.0f)
+
+#define RED Vector4(1.0f, 0.0f, 0.0f, 1.0f)
+#define ORANGE Vector4(1.0f, 0.5f, 0.0f, 1.0f)
+#define YELLOW Vector4(1.0f, 1.0f, 0.0f, 1.0f)
+#define GREEN Vector4(0.0f, 1.0f, 0.0f, 1.0f)
+#define BLUE Vector4(0.0f, 0.0f, 1.0f, 1.0f)
+#define PURPLE Vector4(0.6f, 0.0f, 1.0f, 1.0f)
+#define PINK Vector4(1.0f, 0.0f, 1.0f, 1.0f)
 
 // Default values:
 #define ERROR 0
