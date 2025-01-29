@@ -23,16 +23,16 @@ void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
 	m_Mesh = new Mesh();
 	int dSubdivisions = 24;
 	float fDeltaAngle = (2.0f * PI) / dSubdivisions;
-	float fRadius = 0.25f;
-	Vector3 v3Origin = Vector3(0.0f, 0.0f, 0.0f);
+	float fRadius = 0.5f;
+	Vector3 v3Origin = Vector3(0.5f, 0.0f, 0.0f);
 	std::vector<Vector3> lVertices;
 
 	// Creating the vertices for the circle.
 	for (uint i = 0; i < dSubdivisions; i++)
 	{
 		lVertices.push_back(Vector3(
-			cos(i * fDeltaAngle) * fRadius,
-			sin(i * fDeltaAngle) * fRadius,
+			cos(i * fDeltaAngle) * fRadius + v3Origin.x,
+			sin(i * fDeltaAngle) * fRadius + v3Origin.y,
 			0.0f
 		));
 	}
