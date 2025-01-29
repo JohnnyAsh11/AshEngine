@@ -131,7 +131,7 @@ void Mesh::CompileMesh()
 	GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_VBO));
 	GLCall(glBufferData(
 		GL_ARRAY_BUFFER, 
-		m_dVertexCount * m_dVertexCount * sizeof(Vector3),
+		m_dVertexCount * (int)m_VertexType * sizeof(Vector3),
 		&m_lVertices[0],
 		GL_STATIC_DRAW));
 

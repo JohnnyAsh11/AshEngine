@@ -21,10 +21,10 @@ void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
 
 	// Creating some variables for generating the circle.
 	m_Mesh = new Mesh();
-	int dSubdivisions = 24;
+	int dSubdivisions = 48;
 	float fDeltaAngle = (2.0f * PI) / dSubdivisions;
-	float fRadius = 0.5f;
-	Vector3 v3Origin = Vector3(0.5f, 0.0f, 0.0f);
+	float fRadius = 0.75f;
+	Vector3 v3Origin = Vector3(0.0f, 0.0f, 0.0f);
 	std::vector<Vector3> lVertices;
 
 	// Creating the vertices for the circle.
@@ -40,9 +40,9 @@ void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
 	// Adding the vertices into the buffers of the mesh.
 	for (uint i = 0; i < dSubdivisions; i++)
 	{
-		m_Mesh->AddVertexColor(v3Origin, BLUE);
-		m_Mesh->AddVertexColor(lVertices[i], RED);
-		m_Mesh->AddVertexColor(lVertices[(i + 1) % dSubdivisions], GREEN);
+		m_Mesh->AddVertexColor(v3Origin, PURPLE);
+		m_Mesh->AddVertexColor(lVertices[i], YELLOW);
+		m_Mesh->AddVertexColor(lVertices[(i + 1) % dSubdivisions], YELLOW);
 	}
 
 	// Compiling the mesh for OpenGL to actually use.
