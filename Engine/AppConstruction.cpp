@@ -7,7 +7,6 @@ Application::Application(Application const& a_aInput)
 	// Copying stack allocated data.
 	m_v3Mouse = a_aInput.m_v3Mouse;
 	m_bIsRunning = a_aInput.m_bIsRunning;
-	m_v4ClearColor = a_aInput.m_v4ClearColor;
 
 	// Deep copying the objects stored on the heap.
 	m_pWindow = new sf::Window(
@@ -27,7 +26,6 @@ Application& Application::operator=(Application const& a_aInput)
 	// Copying stack allocated data.
 	m_v3Mouse = a_aInput.m_v3Mouse;
 	m_bIsRunning = a_aInput.m_bIsRunning;
-	m_v4ClearColor = a_aInput.m_v4ClearColor;
 
 	// Deep copying the objects stored on the heap.
 	m_pWindow = new sf::Window(
@@ -50,16 +48,10 @@ void Application::ChangeScreenBounds(void)
 
 void Application::ClearScreen(Vector4 a_v4ClearColor)
 {
-	// Setting the clear color.
-	if (m_v4ClearColor != a_v4ClearColor)
-	{
-		m_v4ClearColor = a_v4ClearColor;
-	}
-
 	// Actually clearing the color in the render window.
 	GLCall(glClearColor(
-		m_v4ClearColor.x,
-		m_v4ClearColor.y,
-		m_v4ClearColor.z,
-		m_v4ClearColor.w));
+		a_v4ClearColor.x,
+		a_v4ClearColor.y,
+		a_v4ClearColor.z,
+		a_v4ClearColor.w));
 }
