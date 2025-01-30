@@ -57,14 +57,13 @@ void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
 
 void Application::Update(void)
 {
-	m_Mesh->Update();
-	m_Mesh2->Update();
+	// Empty at the moment - -
 }
 
 void Application::Render(void)
 {
-	m_Mesh2->Render();
 	m_Mesh->Render();
+	m_Mesh2->Render();
 
 	// Clearing the screen to be a base color.
 	this->ClearScreen(EMERALD_GREEN);
@@ -74,6 +73,7 @@ Application::~Application()
 {
 	// Freeing heap allocated variables.
 	Realloc(m_Mesh);
+	Realloc(m_Mesh2);
 
 	// Releasing singletons.
 	FileReader::GetInstance()->ReleaseInstance();

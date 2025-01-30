@@ -163,8 +163,14 @@ void Mesh::CompileMesh()
 	glBindVertexArray(0);
 }
 
-void Mesh::Update()
+void Mesh::Render()
 {
+	// Assigning the program to use this Mesh's Shaders.
+	glUseProgram(m_pShader->GetProgramID());
+
+	// Binding this Mesh's VAO and VBO.
+	glBindVertexArray(m_VAO);
+
 	Matrix4 m4Model = IDENTITY_M4;
 	Matrix4 m4View;
 	Matrix4 m4Projection;
@@ -174,15 +180,6 @@ void Mesh::Update()
 
 	// Grabbing the uniform Matrix4.
 	glUniformMatrix4fv(MVP, 1, GL_FALSE, glm::value_ptr(m4Projection * m4View * m4Model));
-}
-
-void Mesh::Render()
-{
-	// Assigning the program to use this Mesh's Shaders.
-	glUseProgram(m_pShader->GetProgramID());
-
-	// Binding this Mesh's VAO.
-	glBindVertexArray(m_VAO);
 
 	// Drawing the vertex buffers.
 	glDrawArrays(GL_TRIANGLES, 0, m_dVertexCount);
@@ -193,6 +190,16 @@ void Mesh::Render()
 
 void Mesh::Reset(void)
 {
+	if (m_VBO > 0)
+	{
+		glDeleteBuffers(1, &m_VBO);
+	}
+
+	if (m_VAO > 0)
+	{
+		glDeleteVertexArrays(1, &m_VAO);
+	}
+
 	m_VertexType = VertexType::Undefined;
 	m_dVertexCount = 0;
 	m_VAO = 0;

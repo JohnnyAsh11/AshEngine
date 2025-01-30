@@ -81,11 +81,6 @@ namespace ASH
 		void CompileMesh();
 
 		/// <summary>
-		/// Frame to frame logic update method for instances of the Mesh class.
-		/// </summary>
-		void Update();
-
-		/// <summary>
 		/// Renders this Mesh's buffers to the window.
 		/// </summary>
 		void Render();
