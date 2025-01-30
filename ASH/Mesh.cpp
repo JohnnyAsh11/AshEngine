@@ -15,11 +15,35 @@ Mesh::Mesh()
 }
 Mesh::~Mesh(void)
 {
+	// Deleting the Vertex Buffer obj if it exists.
+	if (m_VBO > 0)
+	{
+		glDeleteBuffers(1, &m_VBO);
+	}
+
+	// Deleting the Vertex Array obj if it exists.
+	if (m_VAO > 0)
+	{
+		glDeleteVertexArrays(1, &m_VAO);
+	}
+
 	// Freeing any heap allocated memory.
 	Realloc(m_pShader);
 }
 Mesh::Mesh(const Mesh& other)
 {
+	// Deleting the Vertex Buffer obj if it exists.
+	if (m_VBO > 0)
+	{
+		glDeleteBuffers(1, &m_VBO);
+	}
+
+	// Deleting the Vertex Array obj if it exists.
+	if (m_VAO > 0)
+	{
+		glDeleteVertexArrays(1, &m_VAO);
+	}
+
 	// Safely freeing the memory for the Shader.
 	if (m_pShader != nullptr)
 	{
@@ -44,6 +68,18 @@ Mesh::Mesh(const Mesh& other)
 }
 Mesh& Mesh::operator=(const Mesh& other)
 {
+	// Deleting the Vertex Buffer obj if it exists.
+	if (m_VBO > 0)
+	{
+		glDeleteBuffers(1, &m_VBO);
+	}
+
+	// Deleting the Vertex Array obj if it exists.
+	if (m_VAO > 0)
+	{
+		glDeleteVertexArrays(1, &m_VAO);
+	}
+
 	// Safely freeing the memory for the Shader.
 	if (m_pShader != nullptr)
 	{
