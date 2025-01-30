@@ -42,7 +42,7 @@ void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
 	{
 		m_Mesh->AddVertexColor(v3Origin, PURPLE);
 		m_Mesh->AddVertexColor(lVertices[i], YELLOW);
-		m_Mesh->AddVertexColor(lVertices[(i + 1) % dSubdivisions], YELLOW);
+		m_Mesh->AddVertexColor(lVertices[(i + 1) % dSubdivisions], BLUE);
 	}
 
 	// Compiling the mesh for OpenGL to actually use.
@@ -51,22 +51,6 @@ void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
 
 void Application::Update(void)
 {
-	// Handling window events.
-	sf::Event event;
-	while (m_pWindow->pollEvent(event))
-	{
-		if (event.type == sf::Event::Closed)
-		{
-			// Closing the application.
-			m_bIsRunning = false;
-		}
-		else if (event.type == sf::Event::Resized)
-		{
-			// Adjusting the viewport when the window is resized.
-			GLCall(glViewport(0, 0, event.size.width, event.size.height));
-		}
-	}
-
 	m_Mesh->Update();
 }
 
@@ -75,7 +59,7 @@ void Application::Render(void)
 	m_Mesh->Render();
 
 	// Clearing the screen to be a base color.
-	this->ClearScreen(CORNFLOWER_BLUE);
+	this->ClearScreen(EMERALD_GREEN);
 }
 
 Application::~Application()
@@ -87,6 +71,6 @@ Application::~Application()
 	FileReader::GetInstance()->ReleaseInstance();
 
 	// Freeing memory.
-	Realloc(m_pWindow);
 	Realloc(m_sProgramShader);
+	Realloc(m_pWindow);
 }

@@ -7,6 +7,22 @@ void Application::Run(void)
 
 	while (m_bIsRunning)
 	{
+		// Handling window events.
+		sf::Event event;
+		while (m_pWindow->pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+			{
+				// Closing the application.
+				m_bIsRunning = false;
+			}
+			else if (event.type == sf::Event::Resized)
+			{
+				// Adjusting the viewport when the window is resized.
+				GLCall(glViewport(0, 0, event.size.width, event.size.height));
+			}
+		}
+
 		// Calling the logic update method.
 		this->Update();
 

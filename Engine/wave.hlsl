@@ -11,7 +11,7 @@ uniform vec2 resolution;
 #define amp 0.5
 #define phase 0.5
 
-void main(void) 
+void main() 
 {
 	vec2 p = (gl_FragCoord.xy / resolution.xy) - 0.5;
 	

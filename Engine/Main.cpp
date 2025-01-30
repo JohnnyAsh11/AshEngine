@@ -6,7 +6,7 @@ int main()
 	Application* app = new Application();
 	app->Init("AshEngine");
 	app->Run();
-	
+
 	// Clean up.
 	Realloc(app);
 
