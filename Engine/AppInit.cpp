@@ -39,7 +39,7 @@ void Application::Run(void)
 
 void Application::InitWindow()
 {
-	m_pWindow->setVerticalSyncEnabled(true);
+	m_pWindow->setVerticalSyncEnabled(false);
 
 	// Initializing GLEW.
 	glewExperimental = GL_TRUE;

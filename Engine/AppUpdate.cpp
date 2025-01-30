@@ -45,6 +45,12 @@ void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
 		m_Mesh->AddVertexColor(lVertices[(i + 1) % dSubdivisions], BLUE);
 	}
 
+	m_Mesh2 = new Mesh();
+	m_Mesh2->AddVertexColor(Vector3(+0.0f, +0.25f, +0.0f), RED);
+	m_Mesh2->AddVertexColor(Vector3(-0.25f, -0.25f, +0.0f), GREEN);
+	m_Mesh2->AddVertexColor(Vector3(+0.25f, -0.25f, +0.0f), BLUE);
+	m_Mesh2->CompileMesh();
+
 	// Compiling the mesh for OpenGL to actually use.
 	m_Mesh->CompileMesh();
 }
@@ -52,10 +58,12 @@ void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
 void Application::Update(void)
 {
 	m_Mesh->Update();
+	m_Mesh2->Update();
 }
 
 void Application::Render(void)
 {
+	m_Mesh2->Render();
 	m_Mesh->Render();
 
 	// Clearing the screen to be a base color.

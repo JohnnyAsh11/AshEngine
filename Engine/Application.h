@@ -12,6 +12,7 @@ class Application
 {
 private:
 	Mesh* m_Mesh = nullptr;
+	Mesh* m_Mesh2 = nullptr;
 
 	// Fields for the window itself
 	sf::Window* m_pWindow = nullptr;
