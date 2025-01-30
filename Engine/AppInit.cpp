@@ -20,6 +20,9 @@ void Application::Run(void)
 			{
 				// Adjusting the viewport when the window is resized.
 				GLCall(glViewport(0, 0, event.size.width, event.size.height));
+				
+				// Calling the window resizing callback method.
+				this->OnChangeScreenBounds();
 			}
 		}
 
@@ -60,17 +63,17 @@ void Application::InitWindow()
 void Application::ShaderInit(void)
 {
 	// Initializing the shader object.
-	m_sProgramShader = new Shader();
+	m_pProgramShader = new Shader();
 	
 	// Compiling the loaded in fragment and vertex shaders.
 	//  Will automatically use the basic vertex and fragment shaders.
-	m_sProgramShader->CompileShader(
+	m_pProgramShader->CompileShader(
 		"shaders/basicVertex.hlsl",
 		"shaders/basicFrag.hlsl", 
 		"BasicProgramShaders");
 
 	// Outputing that there was an error.
-	if (m_sProgramShader->GetProgramID() == ERROR)
+	if (m_pProgramShader->GetProgramID() == ERROR)
 	{
 		std::cout << "There was an error in shader compilation" << std::endl;
 	}

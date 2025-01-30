@@ -16,7 +16,7 @@ private:
 
 	// Fields for the window itself
 	sf::Window* m_pWindow = nullptr;
-	ASH::Shader* m_sProgramShader = nullptr;
+	ASH::Shader* m_pProgramShader = nullptr;
 
 	Vector3 m_v3Mouse = Vector3();
 	bool m_bIsRunning = false;
@@ -64,6 +64,9 @@ private:
 	/// </summary>
 	void InitWindow();
 
+	/// <summary>
+	/// Initializes the base shaders for the window.
+	/// </summary>
 	void ShaderInit(void);
 
 	/// <summary>
@@ -79,13 +82,13 @@ private:
 	/// <summary>
 	/// Clears everything off of the screen for the next frame.
 	/// </summary>
-	/// <param name="a_v4Color">The color to clear the screen with.</param>
-	void ClearScreen(Vector4 a_v4ClearColor = Vector4(-1.0f));
+	/// <param name="a_v4Color">The color to clear the screen with.  Defaults to Cornflower Blue</param>
+	void ClearScreen(Vector4 a_v4ClearColor = CORNFLOWER_BLUE);
 
 	/// <summary>
 	/// Detects if the screen bounds have changed and updates the window.
 	/// </summary>
-	void ChangeScreenBounds(void);
+	void OnChangeScreenBounds(void);
 };
 
 #endif //__APPLICATION_H_

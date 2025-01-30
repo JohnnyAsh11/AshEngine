@@ -4,6 +4,9 @@ Application::Application() { }
 
 Application::Application(Application const& a_aInput)
 {
+	Realloc(m_pWindow);
+	Realloc(m_pProgramShader);
+
 	// Copying stack allocated data.
 	m_v3Mouse = a_aInput.m_v3Mouse;
 	m_bIsRunning = a_aInput.m_bIsRunning;
@@ -18,11 +21,14 @@ Application::Application(Application const& a_aInput)
 		sf::ContextSettings(24));
 
 
-	m_sProgramShader = new Shader(*a_aInput.m_sProgramShader);
+	m_pProgramShader = new Shader(*a_aInput.m_pProgramShader);
 }
 
 Application& Application::operator=(Application const& a_aInput)
 {
+	Realloc(m_pWindow);
+	Realloc(m_pProgramShader);
+
 	// Copying stack allocated data.
 	m_v3Mouse = a_aInput.m_v3Mouse;
 	m_bIsRunning = a_aInput.m_bIsRunning;
@@ -35,13 +41,13 @@ Application& Application::operator=(Application const& a_aInput)
 		"COPY WINDOW",
 		sf::Style::Default,
 		sf::ContextSettings(24));
-	m_sProgramShader = new Shader(*a_aInput.m_sProgramShader);
+	m_pProgramShader = new Shader(*a_aInput.m_pProgramShader);
 
 	// Returning this instance of the application.
 	return *this;
 }
 
-void Application::ChangeScreenBounds(void)
+void Application::OnChangeScreenBounds(void)
 {
 	std::cout << "Altering screen bounds" << std::endl;
 }

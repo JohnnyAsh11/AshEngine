@@ -79,6 +79,6 @@ Application::~Application()
 	FileReader::GetInstance()->ReleaseInstance();
 
 	// Freeing memory.
-	Realloc(m_sProgramShader);
+	Realloc(m_pProgramShader);
 	Realloc(m_pWindow);
 }
