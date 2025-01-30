@@ -40,19 +40,19 @@ void Application::Init(String a_sAppName, uint a_uWidth, uint a_uHeight)
 	// Adding the vertices into the buffers of the mesh.
 	for (uint i = 0; i < dSubdivisions; i++)
 	{
-		m_Mesh->AddVertexColor(v3Origin, PURPLE);
-		m_Mesh->AddVertexColor(lVertices[i], YELLOW);
-		m_Mesh->AddVertexColor(lVertices[(i + 1) % dSubdivisions], BLUE);
+		m_Mesh->AddVertexColor(v3Origin, PINK);
+		m_Mesh->AddVertexColor(lVertices[i], EMERALD_GREEN);
+		m_Mesh->AddVertexColor(lVertices[(i + 1) % dSubdivisions], EMERALD_GREEN);
 	}
 
 	m_Mesh2 = new Mesh();
 	m_Mesh2->AddVertexColor(Vector3(+0.0f, +0.25f, +0.0f), RED);
 	m_Mesh2->AddVertexColor(Vector3(-0.25f, -0.25f, +0.0f), GREEN);
 	m_Mesh2->AddVertexColor(Vector3(+0.25f, -0.25f, +0.0f), BLUE);
-	m_Mesh2->CompileMesh();
 
-	// Compiling the mesh for OpenGL to actually use.
+	// Compiling the meshes for OpenGL to actually use.
 	m_Mesh->CompileMesh();
+	m_Mesh2->CompileMesh();
 }
 
 void Application::Update(void)
