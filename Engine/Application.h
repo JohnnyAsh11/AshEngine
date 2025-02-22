@@ -2,6 +2,8 @@
 #define __APPLICATION_H_
 
 #include "Main.h"
+#include "Entity.h"
+#include <vector>
 
 typedef unsigned int uint;
 
@@ -11,12 +13,12 @@ typedef unsigned int uint;
 class Application
 {
 private:
-	Mesh* m_Mesh = nullptr;
-	Mesh* m_Mesh2 = nullptr;
-
 	// Fields for the window itself
 	sf::Window* m_pWindow = nullptr;
 	ASH::Shader* m_pProgramShader = nullptr;
+
+	std::shared_ptr<Camera> m_pCamera;
+	std::vector<Entity> m_lEntities;
 
 	Vector3 m_v3Mouse = Vector3();
 	bool m_bIsRunning = false;

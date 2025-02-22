@@ -26,12 +26,12 @@ namespace ASH
 	class ASH_API Mesh
 	{
 	private:
-		GLuint m_VBO;				// Vertex Buffer Object
-		GLuint m_VAO;				// Vertex Array Object
-		VectorList m_lVertices;		// List of Vertices
-		VertexType m_VertexType;	// Type of Vertices in the buffers.
-		int m_dVertexCount;			// Total Amount of Vertices.
-		Shader* m_pShader;			// Shader for this Mesh.
+		GLuint m_VBO;					// Vertex Buffer Object
+		GLuint m_VAO;					// Vertex Array Object
+		VectorList m_lVertices;			// List of Vertices
+		VertexType m_VertexType;		// Type of Vertices in the buffers.
+		int m_dVertexCount;				// Total Amount of Vertices.
+		Shader* m_pShader = nullptr;	// Shader for this Mesh.
 
 	public:
 		/// <summary>
@@ -83,7 +83,10 @@ namespace ASH
 		/// <summary>
 		/// Renders this Mesh's buffers to the window.
 		/// </summary>
-		void Render();
+		void Render(
+			Matrix4 a_m4View = IDENTITY_M4, 
+			Matrix4 a_m4Projection = IDENTITY_M4, 
+			Matrix4 a_m4World = IDENTITY_M4);
 
 	private:
 

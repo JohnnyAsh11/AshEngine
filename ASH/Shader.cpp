@@ -21,9 +21,15 @@ Shader::Shader(const Shader& other)
 
 Shader::~Shader(void)
 {
-	if (m_uProgramID >= 0)
+	if (m_uProgramID > 0)
 	{
+		// Make sure we are not using this Shader.
+		GLCall(glUseProgram(0));
+
+		// Deleting the shader.
 		GLCall(glDeleteProgram(m_uProgramID));
+
+		// Setting the Program ID to a faux value.
 		m_uProgramID = -1;
 	}
 }

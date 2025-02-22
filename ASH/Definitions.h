@@ -78,8 +78,8 @@ namespace ASH
 
 // Macro variables:
 #define PI 3.1415926535
-#define IDENTITY_M4 Matrix4(1.0f);
-#define VECTOR3_ZERO Vector3(0.0f);
+#define IDENTITY_M4 Matrix4(1.0f)
+#define VECTOR3_ZERO Vector3(0.0f)
 
 // Axes:
 #define AXIS_X Vector3(1.0f, 0.0f, 0.0f)

@@ -120,7 +120,6 @@ void Mesh::AddVertex(Vector3 a_v3VertexPosition)
 	// Incrementing the vertex count.
 	m_dVertexCount++;
 }
-
 void Mesh::AddVertexColor(Vector3 a_v3VertexPosition, Vector3 a_v3VertexColor)
 {
 	// Changing the vertex type from undefined. 
@@ -136,7 +135,6 @@ void Mesh::AddVertexColor(Vector3 a_v3VertexPosition, Vector3 a_v3VertexColor)
 	// Incrementing the vertex count.
 	m_dVertexCount++;
 }
-
 void Mesh::Clear(void)
 {
 	// Actually clearing the list.
@@ -199,7 +197,7 @@ void Mesh::CompileMesh()
 	glBindVertexArray(0);
 }
 
-void Mesh::Render()
+void Mesh::Render(Matrix4 a_m4View, Matrix4 a_m4Projection, Matrix4 a_m4World)
 {
 	// Assigning the program to use this Mesh's Shaders.
 	glUseProgram(m_pShader->GetProgramID());
@@ -207,15 +205,15 @@ void Mesh::Render()
 	// Binding this Mesh's VAO and VBO.
 	glBindVertexArray(m_VAO);
 
-	Matrix4 m4Model = IDENTITY_M4;
-	Matrix4 m4View;
-	Matrix4 m4Projection;
+	Matrix4 m4World = a_m4World;
+	Matrix4 m4View = a_m4View;
+	Matrix4 m4Projection = a_m4Projection;
 
 	// Reading the uniforms from the shader and send values.
-	GLuint MVP = glGetUniformLocation(m_pShader->GetProgramID(), "MVP");
+	GLuint WVP = glGetUniformLocation(m_pShader->GetProgramID(), "WVP");
 
 	// Grabbing the uniform Matrix4.
-	glUniformMatrix4fv(MVP, 1, GL_FALSE, glm::value_ptr(m4Projection * m4View * m4Model));
+	glUniformMatrix4fv(WVP, 1, GL_FALSE, glm::value_ptr(m4Projection * m4View * m4World));
 
 	// Drawing the vertex buffers.
 	glDrawArrays(GL_TRIANGLES, 0, m_dVertexCount);
